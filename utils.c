@@ -6,7 +6,7 @@
 /*   By: muharsla <muharsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:33:50 by muharsla          #+#    #+#             */
-/*   Updated: 2025/05/09 17:00:01 by muharsla         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:51:21 by muharsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ long	get_time(void)
 
 void	print(t_philo *philo, char *msg)
 {
-	(&philo->data->print_mutex);
+	pthread_mutex_lock(&philo->data->print_mutex);
 	if (!philo->data->stop || (msg[0] == 'd' && msg[1] == 'i' && msg[2] == 'e'))
 	{
 		printf("%ld %d %s\n", get_time() - philo->data->start_time,

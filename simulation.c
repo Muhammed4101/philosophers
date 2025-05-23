@@ -6,7 +6,7 @@
 /*   By: muharsla <muharsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 12:31:06 by muharsla          #+#    #+#             */
-/*   Updated: 2025/05/09 17:00:01 by muharsla         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:02:47 by muharsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	check_eat_count(t_data *data)
 	}
 	if (completed == data->num_philos)
 	{
-		(&data->stop_mutex);
+		pthread_mutex_lock(&data->stop_mutex);
 		data->stop = 1;
 		pthread_mutex_unlock(&data->stop_mutex);
 		return (1);
@@ -95,5 +95,6 @@ void	check_stop(t_data *data)
 			return ;
 		if (check_death(data))
 			return ;
+		usleep(1);
 	}
 }
